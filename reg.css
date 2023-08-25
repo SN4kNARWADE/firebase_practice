@@ -1,0 +1,141 @@
+body{
+    background-size: cover;
+    background-origin: content-box;
+    font-family: 'Poppins', sans-serif;
+  
+    background-repeat: no-repeat;  
+    background-color:#d1eef0;
+   
+  }
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  /* -------------------------------------------------header----------------------------- */
+  nav{
+    display: flex;
+    justify-content:  space-around;
+    align-items: center;
+    height: 80px;
+    background-color: rgb(105, 220, 228); 
+    width: 100%;
+    
+    
+  }
+  
+  nav ul{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+  nav ul li{
+    list-style: none;
+    margin: 0 23px;
+  }
+  .right{
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-shadow: 2px 4px 4px gray;
+    height: fit-content;
+    color: white;
+   
+  }
+  .left{
+    font-size: 1.1rem;
+  
+  }
+  nav ul li a{
+    color:rgb(41, 105, 161);
+    text-decoration: none;
+  }
+  nav ul li a:hover{
+    color: #f45106;
+}
+  .logo a{
+    color: #fff;
+    text-decoration: none;
+  }
+  /* .btomj li {
+    list-style: none;
+  }
+  .btomj li a{
+    text-decoration: none;
+    color:rgb(12, 88, 155) ;
+    font-size: 20px;
+    
+  } */
+  
+  /* .btn{
+    display: inline-block;
+    background:rgb(210, 241, 245);
+    width:fit-content;
+    border:1px solid #f7f5f5;
+    padding:12px 50px;
+    border-radius:6px;
+    transition:background 0.5s;
+     
+  }
+  .btn:hover{
+  background:rgb(138, 232, 232);
+  } */
+  /* -------------------------------------------form-------------------------------- */
+  form{
+    top:50%;
+    left: 50%;
+    transform:translate(-50% -50%);
+    width:400px ;
+    height: 860px;
+    padding: 20px;
+    position:flex;
+   
+    background-color:white;
+    margin: 100px;
+    border-radius: 7px;
+   
+  }
+  input[type="text"],input[type="password"],input[type="date"]
+  {
+    padding:10px ;
+    background:#f8f8f8 ;
+    border:.3px solid #ccc;
+    width: 310px;
+    border-radius:3px;
+    border-color: #333;
+    color: black;
+    
+  }
+  input[type="submit"]{
+  padding: 10px;
+    width:320px;
+    background-color:  rgb(102, 230, 221);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+  font-weight: 600;
+  }
+  lable{
+    float: left;
+    margin-left:33px ;
+    font-weight:bold;
+    opacity: .8;
+  }
+  
+  
+  span{
+    color: #555;
+    text-decoration:none;
+    font-size: 14px;
+    font-weight: 100;
+  }
+  span a{
+    color: rgb(102, 230, 221);
+    text-decoration: none;
+  }
+  
+  .color-heading{
+    color:  #2bd7ee;
+    font-size:32px;
+  }

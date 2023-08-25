@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Registration Form</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link  rel="stylesheet" href="reg.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@300&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+  <header id="header">
+    <nav class="container">
+     <div class="right">
+      <h1 class="logo"><a href="./index.html">CYBER WARRIORS</a></h1>
+     </div>
+      <div class="left">
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./about.html">About Us</a></li>
+            <li><a href="#">Go to Test</a></li>
+            <li><a href="./login.html">Login</a></li>
+            <li><a href="./contact.html">Contact Us</a></li>
+    
+        </ul>
+
+      </div>
+     
+      
+    </nav>
+</header>
+
+
+
+<center>
+  <button id="btn">Click</button>
+  <form autocomplete="off" >       
+     <div>
+       <h1 class="color-heading">Registration Form </h1>
+     </div>
+     
+    <div> 
+      <lable>Name</lable><br>
+      <input type="text" name="Name" placeholder="Name"><br><br>
+     <div>
+       <lable>Email</lable><br>
+       <input type="text" name="username" placeholder="Email"><br><br>
+     </div>
+     <div>
+       <lable> Create Password   </lable><br>
+       <input type="password" name="password" placeholder=" Create Password "><br><br>
+     </div>
+
+     <div>
+     <lable> Confirm Password</lable><br />
+        <input type="password" name="Confirm Password" placeholder="Confirm password" required /><br><br>
+      </div>
+      <div>
+        <lable>Date of Birth</lable><br />
+        <input type="date" class="date" required/><br><br>
+      </div>
+      <div>
+        <lable>Mobile no.</lable><br />
+        <input type="text" class="number" placeholder="+91" required/><br><br>
+      </div>
+      <div >
+        <lable>Education</lable><br>
+        <input type="text" name="Education" placeholder="Enter your Education" required/><br><br>
+      </div>
+      
+        <div>
+        <lable>Collage/School Name</lable><br />
+        <input
+          type="text"
+          name="collage"
+          placeholder="collage/ school name"
+        /><br><br>
+      </div>
+     <div>
+        <button type="submit" name="submit" value="Register" id="register">Register</button>
+      </div>
+
+     <span>
+       Already have account? <a href="./login.html">Login now</a> 
+     </span><br>
+  </form>
+</center>
+
+<script src="./script.js"></script>
+</body>
+</html>
