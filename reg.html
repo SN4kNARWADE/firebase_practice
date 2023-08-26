@@ -15,6 +15,36 @@
 
 <body>
 
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import {
+      getFirestore,
+      collection,
+      doc,
+    } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDH2EzjiMQ5ERao83ZWafQaBfK9PdVW20g",
+    authDomain: "cyber-warrior-1.firebaseapp.com",
+    projectId: "cyber-warrior-1",
+    storageBucket: "cyber-warrior-1.appspot.com",
+    messagingSenderId: "1010911021450",
+    appId: "1:1010911021450:web:ac120675740c826cbf6073",
+    measurementId: "G-680NEDDS06"
+  };
+
+    // Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+	const analytics = getAnalytics(app);
+	const auth = getAuth();
+	// console.log(app);
+
+	//get db refernce
+	const db = getFirestore(app);
+
+  </script>
 
   <header id="header">
     <nav class="container">
@@ -40,7 +70,6 @@
 
 
 <center>
-  <button id="btn">Click</button>
   <form autocomplete="off" >       
      <div>
        <h1 class="color-heading">Registration Form </h1>
