@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="log.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@300&display=swap"
     rel="stylesheet">
-    <script src="script.js"></script>
+   
     
 </head>
 
@@ -28,7 +28,7 @@
           <li><a href="./index.html">Home</a></li>
           <li><a href="./about.html">About Us</a></li>
           <li><a href="./exampage.html">Go to Test</a></li>
-          <li><a href="./login.html">Login</a></li>
+          <li><a href="./log.html">Login</a></li>
           <li><a href="./contact.html">Contact Us</a></li>
     
         </ul>
@@ -41,7 +41,7 @@
   </header>
   <section id="login">
     <center>
-      <form autocomplete="off">
+      <form id="form">
         <div>
           <h1 class="heading">Log in</h1>
         </div><br><br>
@@ -52,11 +52,11 @@
 
         </div><br>
         <div>
-          <lable>Username</lable><br>
+          <p>Username</p><br>
           <input type="text" name="username" placeholder="Email" id="email"><br>
         </div><br>
         <div>
-          <lable>Password <a href="#" class="forgot">forgot?</a> </lable><br>
+          <p>Password<a href="#" class="forgot">forgot?</a></p><br>
           <input type="password" name="password" placeholder="Enter your Password" id="password"><br>
 
         </div><br><br>
@@ -64,14 +64,54 @@
           <input type="submit" name="submit" value="Log In" id="login">
         </div>
         <span class="span">
-          not have account? <a href="./register.html">Register now</a>
+          not have account? <a href="./reg.html">Register now</a>
         </span><br><br>
       </form>
     </center>
   </section>
-  <!-- <script src="script.js"></script> -->
+ 
 
 </body>
+<script type="module">
+   // Import the functions you need from the SDKs you need
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-auth.js";
+  import { getFirestore, collection, doc, addDoc } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-firestore.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDH2EzjiMQ5ERao83ZWafQaBfK9PdVW20g",
+    authDomain: "cyber-warrior-1.firebaseapp.com",
+    projectId: "cyber-warrior-1",
+    storageBucket: "cyber-warrior-1.appspot.com",
+    messagingSenderId: "1010911021450",
+    appId: "1:1010911021450:web:ac120675740c826cbf6073",
+    measurementId: "G-680NEDDS06"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+  const auth =getAuth();
+ 
+    const form =document.getElementById("form");
+    form.addEventListener(("submit"),)
+  // const login=document.getElementById("login");
+  // login.addEventListener(("click"),()=>{
+  //   // event.preventDefault();
+  
+  //  createUserWithEmailAndPassword(auth ).then(async (userCredential) => {
+  //     // Signed in
+  //     const user = userCredential.user;
+  //     console.log(userCredential.user.uid);
+  //  });
+  // })
+</script>
 
 
 

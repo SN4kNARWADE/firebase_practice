@@ -1,31 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Registration Form</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link  rel="stylesheet" href="reg.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="reg.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@300&display=swap"
+    rel="stylesheet">
 
 </head>
 
+
 <body>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
-import {
-      getFirestore,
-      collection,
-      doc,
-    } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 
-const firebaseConfig = {
+
+  <header id="header">
+    <nav class="container">
+      <div class="right">
+        <h1 class="logo"><a href="./index.html">CYBER WARRIORS</a></h1>
+      </div>
+      <div class="left">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="#">Go to Test</a></li>
+          <li><a href="./log.html">Login</a></li>
+          <li><a href="./contact.html">Contact Us</a></li>
+
+        </ul>
+
+      </div>
+
+
+    </nav>
+  </header>
+
+
+
+  <center>
+    <form id="form">
+      <div>
+        <h1 class="color-heading">Registration Form </h1>
+      </div>
+
+      <div>
+        <p>Name</p><br>
+        <input type="text" placeholder="Name" id="name" autocomplete="on"><br><br>
+      </div>
+      <div>
+        <p>Email</p><br>
+        <input type="text" placeholder="Email" id="email" autocomplete="on"><br><br>
+      </div>
+      <div>
+        <p>Create Password</p><br>
+        <input type="password" placeholder="Create Password" id="password" autocomplete="on"><br><br>
+      </div>
+      <div>
+        <p>Confirm Password</p><br>
+        <input type="password" placeholder="Confirm password" id="confirm_password" autocomplete="on"><br><br>
+      </div>
+      <div>
+        <p>DOB</p><br>
+        <input type="date" class="date" id="date_of_birth" placeholder="dd-mm-yyyy" autocomplete="on"><br><br>
+      </div>
+      <div>
+        <p>Mobile No</p><br>
+        <input type="text" class="number" placeholder="+91" id="mobile_no" autocomplete="on"><br><br>
+      </div>
+      <div>
+        <p>Education</p><br>
+        <input type="text" placeholder="Enter your Education" id="education" autocomplete="on"><br><br>
+      </div>
+      <div>
+        <p>College Name</p><br>
+        <input type="text" placeholder="Collage/School name" id="college_name" autocomplete="on"><br><br>
+      </div>
+      <div>
+        <button type="submit" value="Register" id="register">Register</button>
+      </div>
+
+      <span>
+        Already have account? <a href="./login.html">Login now</a>
+      </span><br>
+    </form>
+  </center>
+
+
+</body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-auth.js";
+  import { getFirestore, collection, doc, addDoc } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-firestore.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
     apiKey: "AIzaSyDH2EzjiMQ5ERao83ZWafQaBfK9PdVW20g",
     authDomain: "cyber-warrior-1.firebaseapp.com",
     projectId: "cyber-warrior-1",
@@ -35,88 +113,63 @@ const firebaseConfig = {
     measurementId: "G-680NEDDS06"
   };
 
-    // Initialize Firebase
-	const app = initializeApp(firebaseConfig);
-	const analytics = getAnalytics(app);
-	const auth = getAuth();
-	// console.log(app);
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+  // const auth =getAuth();
 
-	//get db refernce
-	const db = getFirestore(app);
+  const form = document.getElementById("form");
+  form.addEventListener(("submit"), async (event) => {
+    event.preventDefault();
+    const name = document.getElementById("name").value;
+    // console.log(name);
+    const email = document.getElementById("email").value;
+    // console.log(email);
+    const password = document.getElementById("password").value;
+    // console.log(password);
+    const confirm_password = document.getElementById("confirm_password").value;
+    // console.log(confirm_password);
+    const Dob = document.getElementById("date_of_birth").value;
+    // console.log(Dob);
+    const mobile_no = document.getElementById("mobile_no").value;
+    // console.log(mobile_no);
+    const education = document.getElementById("education").value;
+    // console.log(education);
+    const college_name = document.getElementById("college_name").value;
+    // console.log(college_name);
+    const info={
+      name: name,
+        email: email,
+        password: password,
+        confirm_password: confirm_password,
+        Dob: Dob,
+        mobile_no: mobile_no,
+        education: education,
+        college_name: college_name 
+    };
+    localStorage.setItem("userInfo",info);
+    console.log(info);
+    try {
+      const response = await addDoc(collection(db, "users"), {
+        name: name,
+        email: email,
+        password: password,
+        confirm_password: confirm_password,
+        Dob: Dob,
+        mobile_no: mobile_no,
+        education: education,
+        college_name: college_name
+      })
+      console.log("Document written with ID: ", response.id);
+      form.reset();
+    }
+    catch (error) {
+      console.error("Error adding document: ", error);
+    };
+  });
 
-  </script>
-
-  <header id="header">
-    <nav class="container">
-     <div class="right">
-      <h1 class="logo"><a href="./index.html">CYBER WARRIORS</a></h1>
-     </div>
-      <div class="left">
-        <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./about.html">About Us</a></li>
-            <li><a href="#">Go to Test</a></li>
-            <li><a href="./login.html">Login</a></li>
-            <li><a href="./contact.html">Contact Us</a></li>
-    
-        </ul>
-
-      </div>
-     
-      
-    </nav>
-</header>
+</script>
 
 
-
-<center>
-  <form autocomplete="off" >       
-     <div>
-       <h1 class="color-heading">Registration Form </h1>
-     </div>
-     
-     <div id="name"> 
-      <label>Name</label><br>
-      <input type="text" name="Name" placeholder="Name" ><br><br>
-  </div>
-  <div id="email">
-      <label>Email</label><br>
-      <input type="text" name="username" placeholder="Email" ><br><br>
-  </div>
-  <div id="password">
-      <label>Create Password</label><br>
-      <input type="password" name="password" placeholder="Create Password" ><br><br>
-  </div>
-  <div id="confirm_password">
-      <label>Confirm Password</label><br>
-      <input type="password" name="confirm_password" placeholder="Confirm password"  ><br><br>
-  </div>
-  <div id="date_of_birth">
-      <label>Date of Birth</label><br>
-      <input type="date" class="date" ><br><br>
-  </div>
-  <div id="mobile_no">
-      <label>Mobile no.</label><br>
-      <input type="text" class="number" placeholder="+91"  ><br><br>
-  </div>
-  <div id="education">
-      <label>Education</label><br>
-      <input type="text" name="Education" placeholder="Enter your Education"  ><br><br>
-  </div>
-  <div id="college_name">
-      <label>Collage/School Name</label><br>
-      <input type="text" name="collage" placeholder="Collage/School name"  ><br><br>
-  </div>
-  <div>
-      <button type="submit" name="submit" value="Register" id="register">Register</button>
-  </div>
-  
-     <span>
-       Already have account? <a href="./login.html">Login now</a> 
-     </span><br>
-  </form>
-</center>
-
-<script src="./script.js"></script>
-</body>
 </html>
