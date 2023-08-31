@@ -36,7 +36,7 @@ nav ul li{
     font-size: 1.4rem;
     font-weight: 600;
     text-shadow: 2px 4px 4px gray;
-    height: fit-content;
+    height: max-content;
     color: white;
    
 }
@@ -97,7 +97,7 @@ nav ul li a:hover{
     color: #6bd5e6;
     text-decoration: none;
   }
-  input[type="text"],input[name="password"]
+  input[type="text"],input[type="password"]
   {
     padding:12px ;
     background:#fafafa ;
@@ -131,7 +131,7 @@ nav ul li a:hover{
 
   
   
-  .google{
+  #login{
     background: #fff;
     border: 1px solid #ccc;
     margin: 10px;

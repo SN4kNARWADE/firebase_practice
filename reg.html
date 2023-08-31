@@ -117,7 +117,7 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const db = getFirestore(app);
-  // const auth =getAuth();
+  const auth = getAuth();
 
   const form = document.getElementById("form");
   form.addEventListener(("submit"), async (event) => {
@@ -138,35 +138,37 @@
     // console.log(education);
     const college_name = document.getElementById("college_name").value;
     // console.log(college_name);
-    const info={
-      name: name,
-        email: email,
-        password: password,
-        confirm_password: confirm_password,
-        Dob: Dob,
-        mobile_no: mobile_no,
-        education: education,
-        college_name: college_name 
-    };
-    localStorage.setItem("userInfo",info);
-    console.log(info);
-    try {
-      const response = await addDoc(collection(db, "users"), {
-        name: name,
-        email: email,
-        password: password,
-        confirm_password: confirm_password,
-        Dob: Dob,
-        mobile_no: mobile_no,
-        education: education,
-        college_name: college_name
-      })
-      console.log("Document written with ID: ", response.id);
-      form.reset();
-    }
-    catch (error) {
-      console.error("Error adding document: ", error);
-    };
+    createUserWithEmailAndPassword(auth, email, password).then(async (userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log(user);
+      // ...
+
+      try {
+        const response = await addDoc(collection(db, "users"), {
+          name: name,
+          email: email,
+          password: password,
+          confirm_password: confirm_password,
+          Dob: Dob,
+          mobile_no: mobile_no,
+          education: education,
+          college_name: college_name
+        })
+        console.log("Document written with ID: ", response.id);
+        form.reset();
+      }
+      catch (error) {
+        console.error("Error adding document: ", error);
+      };
+    }).catch ((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+      console.log(errorMessage);
+      alert(error);
+    });
+    
   });
 
 </script>
