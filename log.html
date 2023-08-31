@@ -1,21 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
   <title>my login</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="log.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="log.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Raleway:wght@300&display=swap"
-    rel="stylesheet">
-    <script src="script.js"></script>
-    
+    rel="stylesheet" />
 </head>
-
-
 
 <body>
   <header id="header">
@@ -28,51 +24,90 @@
           <li><a href="./index.html">Home</a></li>
           <li><a href="./about.html">About Us</a></li>
           <li><a href="./exampage.html">Go to Test</a></li>
-          <li><a href="./login.html">Login</a></li>
+          <li><a href="./log.html">Login</a></li>
           <li><a href="./contact.html">Contact Us</a></li>
-    
         </ul>
-
       </div>
       <!-- <div class="btomj">
         <li><button class="btn"><a href="/register.html">Register</a></button></li>
       </div> -->
     </nav>
   </header>
-  <section id="login">
+  <section >
     <center>
-      <form autocomplete="off">
+      <form id="form">
         <div>
           <h1 class="heading">Log in</h1>
-        </div><br><br>
+        </div>
+        <br /><br />
         <div>
-          <button class="google" id="login">
+          <button id="login" type="submit">
             Continue with Google
           </button>
-
-        </div><br>
+        </div>
+        <br />
         <div>
-          <lable>Username</lable><br>
-          <input type="text" name="username" placeholder="Email" id="email"><br>
-        </div><br>
+          <p>Username</p>
+          <br />
+          <input type="text" placeholder="Email" id="email" autocomplete="off"/><br />
+        </div>
+        <br />
         <div>
-          <lable>Password <a href="#" class="forgot">forgot?</a> </lable><br>
-          <input type="password" name="password" placeholder="Enter your Password" id="password"><br>
-
-        </div><br><br>
+          <p>Password<a href="#" class="forgot">forgot?</a></p>
+          <br />
+          <input type="password"  placeholder="Enter your Password" id="password" autocomplete="off"/><br />
+        </div>
+        <br /><br />
         <div>
-          <input type="submit" name="submit" value="Log In" id="login">
+          <input type="submit"  value="Log In" />
         </div>
         <span class="span">
-          not have account? <a href="./register.html">Register now</a>
-        </span><br><br>
+          not have account? <a href="./reg.html">Register now</a> </span><br /><br />
       </form>
     </center>
   </section>
-  <!-- <script src="script.js"></script> -->
-
 </body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-analytics.js";
+  import {
+    getAuth, GoogleAuthProvider, signInWithRedirect,signInWithPopup
+  } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-auth.js";
+  import {
+    getFirestore,
+    collection,
+    doc,
+    addDoc
+  } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-firestore.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDH2EzjiMQ5ERao83ZWafQaBfK9PdVW20g",
+    authDomain: "cyber-warrior-1.firebaseapp.com",
+    projectId: "cyber-warrior-1",
+    storageBucket: "cyber-warrior-1.appspot.com",
+    messagingSenderId: "1010911021450",
+    appId: "1:1010911021450:web:ac120675740c826cbf6073",
+    measurementId: "G-680NEDDS06",
+  };
+
+  const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
 
+
+
+const login = document.getElementById("login");
+login.onclick = function(){
+  signInWithPopup(auth, provider);
+}
+
+
+</script>
 
 </html>
